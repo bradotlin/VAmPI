@@ -1,0 +1,878 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "VAmPI-vulnerable",
+    "description" : "OpenAPI v3 specs for VAmPI",
+    "version" : "0.1"
+  },
+  "servers" : [ {
+    "url" : "https://q2u6q3r4tc.execute-api.us-east-2.amazonaws.com/{basePath}",
+    "variables" : {
+      "basePath" : {
+        "default" : "api"
+      }
+    }
+  } ],
+  "paths" : {
+    "/users/v1/register" : {
+      "post" : {
+        "operationId" : "api_views.users.register_user",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/MODELc001d7"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "400" : {
+            "description" : "400 response",
+            "content" : { }
+          },
+          "200" : {
+            "description" : "200 response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/MODEL1a1483"
+                }
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration" : {
+          "httpMethod" : "POST",
+          "uri" : "http://3.139.128.108:5002/users/v1/register",
+          "responses" : {
+            "default" : {
+              "statusCode" : "200"
+            }
+          },
+          "passthroughBehavior" : "when_no_match",
+          "type" : "http"
+        }
+      }
+    },
+    "/books/v1" : {
+      "get" : {
+        "operationId" : "api_views.books.get_all_books",
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/MODELb50c1c"
+                }
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration" : {
+          "httpMethod" : "GET",
+          "uri" : "http://3.139.128.108:5002/books/v1",
+          "responses" : {
+            "default" : {
+              "statusCode" : "200"
+            }
+          },
+          "passthroughBehavior" : "when_no_match",
+          "type" : "http"
+        }
+      },
+      "post" : {
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "content" : { }
+          }
+        },
+        "x-amazon-apigateway-integration" : {
+          "httpMethod" : "POST",
+          "uri" : "http://3.139.128.108:5002/books/v1",
+          "responses" : {
+            "default" : {
+              "statusCode" : "200"
+            }
+          },
+          "passthroughBehavior" : "when_no_match",
+          "type" : "http_proxy"
+        }
+      }
+    },
+    "/books/v1/{book_title}" : {
+      "get" : {
+        "operationId" : "api_views.books.get_by_title",
+        "parameters" : [ {
+          "name" : "book_title",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "404" : {
+            "description" : "404 response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/MODELafabe0"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "401 response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/MODELd45ad8"
+                }
+              }
+            }
+          },
+          "200" : {
+            "description" : "200 response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ArrayOfMODELd80c63"
+                }
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration" : {
+          "httpMethod" : "GET",
+          "uri" : "http://3.139.128.108:5002/books/v1/{book_title}",
+          "responses" : {
+            "default" : {
+              "statusCode" : "200"
+            }
+          },
+          "requestParameters" : {
+            "integration.request.path.book_title" : "method.request.path.book_title"
+          },
+          "passthroughBehavior" : "when_no_match",
+          "type" : "http_proxy"
+        }
+      }
+    },
+    "/createdb" : {
+      "get" : {
+        "operationId" : "api_views.main.populate_db",
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/MODEL694c4a"
+                }
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration" : {
+          "httpMethod" : "GET",
+          "uri" : "http://3.139.128.108:5002/createdb",
+          "responses" : {
+            "default" : {
+              "statusCode" : "200"
+            }
+          },
+          "passthroughBehavior" : "when_no_match",
+          "type" : "http"
+        }
+      }
+    },
+    "/users/v1/login" : {
+      "post" : {
+        "operationId" : "api_views.users.login_user",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/MODEL76af91"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "400" : {
+            "description" : "400 response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/MODEL8c4445"
+                }
+              }
+            }
+          },
+          "200" : {
+            "description" : "200 response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/MODEL432a32"
+                }
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration" : {
+          "httpMethod" : "POST",
+          "uri" : "http://3.139.128.108:5002/users/v1/login",
+          "responses" : {
+            "default" : {
+              "statusCode" : "200"
+            }
+          },
+          "passthroughBehavior" : "when_no_match",
+          "type" : "http"
+        }
+      }
+    },
+    "/users/v1/{username}" : {
+      "get" : {
+        "operationId" : "api_views.users.get_by_username",
+        "parameters" : [ {
+          "name" : "username",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "404" : {
+            "description" : "404 response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/MODEL574b3f"
+                }
+              }
+            }
+          },
+          "200" : {
+            "description" : "200 response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ArrayOfMODEL37bc49"
+                }
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration" : {
+          "httpMethod" : "GET",
+          "uri" : "http://3.139.128.108:5002/users/v1/{username}",
+          "responses" : {
+            "default" : {
+              "statusCode" : "200"
+            }
+          },
+          "requestParameters" : {
+            "integration.request.path.username" : "method.request.path.username"
+          },
+          "passthroughBehavior" : "when_no_match",
+          "type" : "http_proxy"
+        }
+      },
+      "delete" : {
+        "operationId" : "api_views.users.delete_user",
+        "parameters" : [ {
+          "name" : "username",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "404" : {
+            "description" : "404 response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/MODEL9b5593"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "401 response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/MODELf761d0"
+                }
+              }
+            }
+          },
+          "200" : {
+            "description" : "200 response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/MODELbb5b23"
+                }
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration" : {
+          "httpMethod" : "DELETE",
+          "uri" : "http://3.139.128.108:5002/users/v1/{username}",
+          "responses" : {
+            "default" : {
+              "statusCode" : "200"
+            }
+          },
+          "requestParameters" : {
+            "integration.request.path.username" : "method.request.path.username"
+          },
+          "passthroughBehavior" : "when_no_match",
+          "type" : "http_proxy"
+        }
+      }
+    },
+    "/users/v1" : {
+      "get" : {
+        "operationId" : "api_views.users.get_all_users",
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/MODEL20789f"
+                }
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration" : {
+          "httpMethod" : "GET",
+          "uri" : "http://3.139.128.108:5002/users/v1",
+          "responses" : {
+            "default" : {
+              "statusCode" : "200"
+            }
+          },
+          "passthroughBehavior" : "when_no_match",
+          "type" : "http_proxy"
+        }
+      }
+    },
+    "/users/v1/{username}/email" : {
+      "put" : {
+        "operationId" : "api_views.users.update_email",
+        "parameters" : [ {
+          "name" : "username",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/MODELd06c23"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "400" : {
+            "description" : "400 response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/MODEL74c30e"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "401 response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/MODEL82238b"
+                }
+              }
+            }
+          },
+          "204" : {
+            "description" : "204 response",
+            "content" : { }
+          }
+        },
+        "x-amazon-apigateway-integration" : {
+          "httpMethod" : "PUT",
+          "uri" : "http://3.139.128.108:5002/users/v1/{username}/email",
+          "responses" : {
+            "default" : {
+              "statusCode" : "200"
+            }
+          },
+          "requestParameters" : {
+            "integration.request.path.username" : "method.request.path.username"
+          },
+          "passthroughBehavior" : "when_no_match",
+          "type" : "http_proxy"
+        }
+      }
+    },
+    "/users/v1/{username}/password" : {
+      "put" : {
+        "operationId" : "api_views.users.update_password",
+        "parameters" : [ {
+          "name" : "username",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/MODEL052919"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "400" : {
+            "description" : "400 response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/MODEL5c5c74"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "401 response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/MODEL4ccc89"
+                }
+              }
+            }
+          },
+          "204" : {
+            "description" : "204 response",
+            "content" : { }
+          }
+        },
+        "x-amazon-apigateway-integration" : {
+          "httpMethod" : "PUT",
+          "uri" : "http://3.139.128.108:5002/users/v1/{username}/password",
+          "responses" : {
+            "default" : {
+              "statusCode" : "200"
+            }
+          },
+          "requestParameters" : {
+            "integration.request.path.username" : "method.request.path.username"
+          },
+          "passthroughBehavior" : "when_no_match",
+          "type" : "http_proxy"
+        }
+      }
+    },
+    "/users/v1/_debug" : {
+      "get" : {
+        "operationId" : "api_views.users.debug",
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/MODELb6d182"
+                }
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration" : {
+          "httpMethod" : "GET",
+          "uri" : "http://3.139.128.108:5002/users/v1/_debug",
+          "responses" : {
+            "default" : {
+              "statusCode" : "200"
+            }
+          },
+          "passthroughBehavior" : "when_no_match",
+          "type" : "http_proxy"
+        }
+      }
+    },
+    "/" : {
+      "get" : {
+        "operationId" : "api_views.main.basic",
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/MODEL40d8ff"
+                }
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration" : {
+          "httpMethod" : "GET",
+          "uri" : "http://3.139.128.108:5002/",
+          "responses" : {
+            "default" : {
+              "statusCode" : "200"
+            }
+          },
+          "passthroughBehavior" : "when_no_match",
+          "type" : "http_proxy"
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "MODEL1a1483" : {
+        "type" : "object",
+        "properties" : {
+          "message" : {
+            "type" : "string"
+          },
+          "status" : {
+            "type" : "string",
+            "enum" : [ "success", "fail" ]
+          }
+        }
+      },
+      "MODEL9b5593" : {
+        "type" : "object",
+        "properties" : {
+          "status" : {
+            "type" : "string",
+            "enum" : [ "fail" ]
+          },
+          "message" : {
+            "type" : "string"
+          }
+        }
+      },
+      "MODEL40d8ff" : {
+        "type" : "object",
+        "properties" : {
+          "message" : {
+            "type" : "string"
+          },
+          "help" : {
+            "type" : "string"
+          },
+          "vulnerable" : {
+            "type" : "number"
+          }
+        }
+      },
+      "MODEL694c4a" : {
+        "type" : "object",
+        "properties" : {
+          "message" : {
+            "type" : "string"
+          }
+        }
+      },
+      "MODELafabe0" : {
+        "type" : "object",
+        "properties" : {
+          "status" : {
+            "type" : "string",
+            "enum" : [ "fail" ]
+          },
+          "message" : {
+            "type" : "string"
+          }
+        }
+      },
+      "MODEL20789f" : {
+        "type" : "object",
+        "properties" : {
+          "users" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "properties" : {
+                "email" : {
+                  "type" : "string"
+                },
+                "username" : {
+                  "type" : "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "MODEL76af91" : {
+        "type" : "object",
+        "properties" : {
+          "username" : {
+            "type" : "string"
+          },
+          "password" : {
+            "type" : "string"
+          }
+        }
+      },
+      "MODELb50c1c" : {
+        "type" : "object",
+        "properties" : {
+          "Books" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "properties" : {
+                "book_title" : {
+                  "type" : "string"
+                },
+                "user" : {
+                  "type" : "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "MODELb6d182" : {
+        "type" : "object",
+        "properties" : {
+          "users" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "properties" : {
+                "admin" : {
+                  "type" : "boolean"
+                },
+                "email" : {
+                  "type" : "string"
+                },
+                "password" : {
+                  "type" : "string"
+                },
+                "username" : {
+                  "type" : "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "MODEL052919" : {
+        "type" : "object",
+        "properties" : {
+          "password" : {
+            "type" : "string"
+          }
+        }
+      },
+      "MODEL5c5c74" : {
+        "type" : "object",
+        "properties" : {
+          "status" : {
+            "type" : "string",
+            "enum" : [ "fail" ]
+          },
+          "message" : {
+            "type" : "string"
+          }
+        }
+      },
+      "MODELd06c23" : {
+        "type" : "object",
+        "properties" : {
+          "email" : {
+            "type" : "string"
+          }
+        }
+      },
+      "MODEL4ccc89" : {
+        "type" : "object",
+        "properties" : {
+          "status" : {
+            "type" : "string",
+            "enum" : [ "fail" ]
+          },
+          "message" : {
+            "type" : "string"
+          }
+        }
+      },
+      "MODEL574b3f" : {
+        "type" : "object",
+        "properties" : {
+          "status" : {
+            "type" : "string",
+            "enum" : [ "fail" ]
+          },
+          "message" : {
+            "type" : "string"
+          }
+        }
+      },
+      "ArrayOfMODELd80c63" : {
+        "type" : "array",
+        "items" : {
+          "type" : "object",
+          "properties" : {
+            "book_title" : {
+              "type" : "string"
+            },
+            "owner" : {
+              "type" : "string"
+            },
+            "secret" : {
+              "type" : "string"
+            }
+          }
+        }
+      },
+      "MODELbb5b23" : {
+        "type" : "object",
+        "properties" : {
+          "message" : {
+            "type" : "string"
+          },
+          "status" : {
+            "type" : "string",
+            "enum" : [ "success", "fail" ]
+          }
+        }
+      },
+      "MODEL8c4445" : {
+        "type" : "object",
+        "properties" : {
+          "status" : {
+            "type" : "string",
+            "enum" : [ "fail" ]
+          },
+          "message" : {
+            "type" : "string"
+          }
+        }
+      },
+      "MODEL432a32" : {
+        "type" : "object",
+        "properties" : {
+          "auth_token" : {
+            "type" : "string"
+          },
+          "message" : {
+            "type" : "string"
+          },
+          "status" : {
+            "type" : "string",
+            "enum" : [ "success", "fail" ]
+          }
+        }
+      },
+      "ArrayOfMODEL37bc49" : {
+        "type" : "array",
+        "items" : {
+          "type" : "object",
+          "properties" : {
+            "username" : {
+              "type" : "string"
+            },
+            "email" : {
+              "type" : "string"
+            }
+          }
+        }
+      },
+      "MODEL74c30e" : {
+        "type" : "object",
+        "properties" : {
+          "status" : {
+            "type" : "string",
+            "enum" : [ "fail" ]
+          },
+          "message" : {
+            "type" : "string"
+          }
+        }
+      },
+      "MODELf761d0" : {
+        "type" : "object",
+        "properties" : {
+          "status" : {
+            "type" : "string",
+            "enum" : [ "fail" ]
+          },
+          "message" : {
+            "type" : "string"
+          }
+        }
+      },
+      "MODELc001d7" : {
+        "type" : "object",
+        "properties" : {
+          "username" : {
+            "type" : "string"
+          },
+          "password" : {
+            "type" : "string"
+          },
+          "email" : {
+            "type" : "string"
+          }
+        }
+      },
+      "MODEL82238b" : {
+        "type" : "object",
+        "properties" : {
+          "status" : {
+            "type" : "string",
+            "enum" : [ "fail" ]
+          },
+          "message" : {
+            "type" : "string"
+          }
+        }
+      },
+      "MODELd45ad8" : {
+        "type" : "object",
+        "properties" : {
+          "status" : {
+            "type" : "string",
+            "enum" : [ "fail" ]
+          },
+          "message" : {
+            "type" : "string"
+          }
+        }
+      }
+    }
+  }
+}
